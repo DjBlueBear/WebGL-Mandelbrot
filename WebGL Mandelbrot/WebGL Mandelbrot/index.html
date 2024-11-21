@@ -26,7 +26,7 @@
             uniform vec2 offset;
             uniform float zoom;
             
-            #define depth 10000.0
+            #define depth 1000.0
             #define complex_mult(a,b) vec2(a.x*b.x-a.y*b.y,a.x*b.y+a.y*b.x)
             
             vec3 hsv2rgb(vec3 c)
@@ -38,7 +38,7 @@
             
             void main() {
                 
-                float dynamicDepth = (1.0+log(zoom))*400.0+32.0;
+                float dynamicDepth = zoom*zoom*256.0+32.0;
                 
                 vec2 z = uv/zoom+offset;
                 vec2 c = z;
